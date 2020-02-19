@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-example
+spec:
+  containers:
+    - image: msbgsm/reverseproxy
+      name: reverseproxy
+      imagePullPolicy: Always
+      resources:
+        requests:
+          memory: "64Mi"
+          cpu: "250m"
+        limits:
+          memory: "1024Mi"
+          cpu: "500m"
+      ports:
+        - containerPort: 8080
+      command: ['sh', '-c', 'echo The app is running! && sleep 3600']
+  restartPolicy: Always
+    
